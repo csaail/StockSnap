@@ -1,0 +1,9 @@
+StockSnap/
+│
+├── app.py                # Main Flask app
+├── templates/
+│   ├── index.html        # Homepage template
+│   └── result.html       # Result page template
+├── static/
+│   └── style.css         # Styles for the app (optional)
+└── uploads/              # Directory to save uploaded files

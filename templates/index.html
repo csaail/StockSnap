@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StockSnap</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>StockSnap</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <label for="date_type">Select Date Option:</label>
+            <select name="date_type" id="date_type">
+                <option value="specific">Specific Date</option>
+                <option value="range">Date Range</option>
+            </select>
+            
+            <div id="specific_date">
+                <label for="date">Select Date:</label>
+                <input type="date" name="date" id="date">
+            </div>
+
+            <div id="date_range" style="display:none;">
+                <label for="start_date">Start Date:</label>
+                <input type="date" name="start_date" id="start_date">
+                <label for="end_date">End Date:</label>
+                <input type="date" name="end_date" id="end_date">
+                <label for="weekday">Select Weekday:</label>
+                <select name="weekday" id="weekday">
+                    <option value="0">Monday</option>
+                    <option value="1">Tuesday</option>
+                    <option value="2">Wednesday</option>
+                    <option value="3">Thursday</option>
+                    <option value="4">Friday</option>
+                </select>
+            </div>
+
+            <label for="stock_name">Stock Name (or upload file):</label>
+            <input type="text" name="stock_name" id="stock_name">
+            <input type="file" name="stock_file" id="stock_file">
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        const dateTypeSelect = document.getElementById('date_type');
+        const specificDateDiv = document.getElementById('specific_date');
+        const dateRangeDiv = document.getElementById('date_range');
+
+        dateTypeSelect.addEventListener('change', function () {
+            if (dateTypeSelect.value === 'specific') {
+                specificDateDiv.style.display = 'block';
+                dateRangeDiv.style.display = 'none';
+            } else {
+                specificDateDiv.style.display = 'none';
+                dateRangeDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
